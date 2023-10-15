@@ -11,8 +11,6 @@ public class GermanTranslator implements Translator {
 	public String translateNumber( int number ) {
 		// [ihr Source Code aus Übung 1-2]
 
-		// Datastruct 1 -> "eins"
-		// exception werfen wenn wert nicht in der dts vorhanden ist mit fehlermeldungsausgabe
 		HashMap<Integer,String> t_number = new HashMap<>();
 		t_number.put(1,"eins");
 		t_number.put(2,"zwei");
