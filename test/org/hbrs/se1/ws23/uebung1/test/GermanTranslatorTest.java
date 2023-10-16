@@ -11,16 +11,14 @@ class GermanTranslatorTest {
     private GermanTranslator translator = new GermanTranslator();
 
     @Test
-    void positive_num() {
+    void gt_Test() {
         String pos_ak1 = translator.translateNumber(1);
         assertEquals(pos_ak1, "eins");
 
         String pos_ak3 = translator.translateNumber(100);
         assertEquals(pos_ak3, "Übersetzung der Zahl [" + 100 + "] nicht\n" +
                 "möglich ([" + Translator.version + "])");
-    }
-    @Test
-    void negative_num(){
+
         String neg_ak2 = translator.translateNumber(-1);
         assertEquals(neg_ak2,"Übersetzung der Zahl [" + -1 + "] nicht\n" +
                 "möglich ([" + Translator.version + "])");
