@@ -9,5 +9,5 @@ public interface Member {
     
     public Integer getID();
 
-    public String toString() ;
+    public String toString();
 }

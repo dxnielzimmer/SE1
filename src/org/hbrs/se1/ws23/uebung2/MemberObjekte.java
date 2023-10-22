@@ -10,5 +10,6 @@ public class MemberObjekte implements Member {
         return this.id;
     }
     public String toString(){
-        return "Member (ID = [" + getID() + "])";    }
+        return "Member (ID = [" + getID() + "])";
+    }
 }
