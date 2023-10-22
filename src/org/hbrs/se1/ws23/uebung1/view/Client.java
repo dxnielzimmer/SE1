@@ -2,7 +2,6 @@ package org.hbrs.se1.ws23.uebung1.view;
 
 import org.hbrs.se1.ws23.uebung1.control.Factory_Translator;
 import org.hbrs.se1.ws23.uebung1.control.Translator;
-
 public class Client {
 
 		/*
@@ -23,8 +22,3 @@ public class Client {
 
 		 }
 }
-
-
-
-
-
