@@ -35,14 +35,14 @@ public class ContainerTest {
         c1.addMember(m2);
 
         // positive Test
-        assertEquals(c1.deleteMember(2),"Objekt mit der ID: " + 2 + " wurde erfolgreich gelöscht");
+        assertEquals("Objekt mit der ID: " + 2 + " wurde erfolgreich gelöscht",c1.deleteMember(2));
 
         //negative Test
-        assertEquals(c1.deleteMember(4),"id: " + 4 + " ist nicht vorhanden");
+        assertEquals("id: " + 4 + " ist nicht vorhanden",c1.deleteMember(4));
 
         //negative Test
         c1.deleteMember(1);
-        assertEquals(c1.deleteMember(1),"Liste enthält keine member Objekte");
+        assertEquals("Liste enthält keine member Objekte",c1.deleteMember(1));
 
     }
     @Test
