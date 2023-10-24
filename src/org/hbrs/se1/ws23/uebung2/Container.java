@@ -30,7 +30,7 @@ public class Container {
         while(iter.hasNext()){
             Member m = iter.next();
             if(m.getID() == id){
-                iter.remove();          // liste.remove(m);
+                iter.remove();
                 return "Objekt mit der ID: " + id + " wurde erfolgreich gelöscht";
             }
         }
