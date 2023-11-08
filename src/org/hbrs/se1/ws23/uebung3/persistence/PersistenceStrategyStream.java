@@ -1,11 +1,20 @@
 package org.hbrs.se1.ws23.uebung3.persistence;
 
+import org.hbrs.se1.ws23.uebung3.Member;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
+    private ObjectInputStream ois;
+    private FileInputStream fis;
+    private ObjectOutputStream oos;
+    private FileOutputStream fos;
 
     // URL of file, in which the objects are stored
-    private String location = "objects.ser";
+    private String location;
 
     // Backdoor method used only for testing purposes, if the location should be changed in a Unit-Test
     // Example: Location is a directory (Streams do not like directories, so try this out ;-)!
@@ -20,7 +29,6 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
      * and save.
      */
     public void openConnection() throws PersistenceException {
-
     }
 
     @Override
@@ -28,7 +36,6 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
      * Method for closing the connections to a stream
      */
     public void closeConnection() throws PersistenceException {
-
     }
 
     @Override
@@ -36,7 +43,17 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
      * Method for saving a list of Member-objects to a disk (HDD)
      */
     public void save(List<E> member) throws PersistenceException  {
+        try {
+            oos = new ObjectOutputStream(fos);
+            fos = new FileOutputStream(location);
 
+            oos.writeObject(member);
+            oos.close();
+            fos.close();
+
+        } catch (IOException e ) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -66,6 +83,20 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
         // return newListe
 
         // and finally close the streams (guess where this could be...?)
-        return null;
+
+        List<E>  liste = null;
+        try {
+            fis = new FileInputStream(location);
+            ois  = new ObjectInputStream(fis);
+            Object obj = ois.readObject();
+            if (obj instanceof List<?>) {
+                liste = (List) obj;
+            }
+            ois.close();
+            fis.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return liste;
     }
 }
